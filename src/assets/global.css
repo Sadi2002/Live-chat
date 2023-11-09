@@ -34,7 +34,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   opacity: 0;
-  animation: showContainer 4s;
+  animation: showContainer 3s;
   animation-fill-mode: both;
 }
 
