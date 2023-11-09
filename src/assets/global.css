@@ -5,12 +5,13 @@
 }
 
 body {
-  background: rgb(180, 228, 181);
-  background: linear-gradient(
+  background: white;
+  /* background: rgb(180, 228, 181); */
+  /* background: linear-gradient(
     158deg,
     rgba(180, 228, 181, 1) 28%,
     rgba(80, 186, 217, 1) 100%
-  );
+  ); */
 
   color: #333;
   display: flex;
@@ -24,16 +25,19 @@ body {
 }
 
 .container {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 
   border-radius: 0px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2); */
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  opacity: 0;
+  animation: showContainer 4s;
+  animation-fill-mode: both;
 }
 
 .error {
@@ -66,6 +70,14 @@ button:hover {
   position: relative;
 }
 
+.signup-text {
+  transition: all 0.3s;
+}
+
+.signup-text:hover {
+  color: rgb(80, 186, 217);
+}
+
 .login::after,
 .signup::after {
   content: "";
@@ -91,25 +103,54 @@ button:hover {
   border-radius: 30px;
 } */
 
-@media (500px <= width) {
+@media (767px <= width) {
   .container {
-    border-radius: 20px;
-    height: 90vh;
-    width: 500px;
-    margin: 0 auto;
+    flex-direction: row;
   }
 }
-@media (992px <= width) {
-  .container {
-    width: 960px;
-    height: 500px;
-    margin: 80px auto;
-    border-radius: 20px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
+@media (1200px <= width) {
+  .login,
+  .signup {
+    font-size: 30px;
+  }
+  .form-box label {
+    font-size: 23px;
+  }
+  .form-box input {
+    height: 50px;
+    font-size: 20px;
+  }
+  .welcome p {
+    font-size: 40px;
+  }
+  .welcome .info {
+    font-size: 20px;
+  }
+  .form-box {
+    width: 400px;
+  }
+}
+
+@media (1400px <= width) {
+  .welcome p {
+    font-size: 50px;
+  }
+  .welcome .info {
+    font-size: 25px;
+  }
+  .form-box {
+    width: 500px;
+  }
+  form button {
+    width: 400px;
+  }
+}
+
+@keyframes showContainer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

@@ -64,7 +64,7 @@ form {
   height: 40px;
   border-radius: 10px;
   border: 1px solid grey;
-  padding-left: 20px;
+  padding: 0 20px;
   width: 100%;
 }
 
