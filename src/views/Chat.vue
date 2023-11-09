@@ -1,7 +1,13 @@
-<template></template>
+<template>
+  <NavMobile />
+</template>
 
 <script>
-export default {};
+import NavMobile from "../components/NavMobile.vue";
+import NavDesktop from "../components/NavDesktop.vue";
+export default {
+  components: { NavMobile, NavDesktop },
+};
 </script>
 
 <style></style>
