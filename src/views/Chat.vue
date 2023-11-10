@@ -1,20 +1,24 @@
 <template>
-  <NavMobile v-if="showNavMobile" />
-  <NavDesktop v-if="showNavDesktop" />
-  <NewChat />
+  <div class="wrapper">
+    <NavMobile v-if="showNavMobile" />
+    <NavDesktop v-if="showNavDesktop" />
+    <ChatWindow />
+    <NewChat />
+  </div>
 </template>
 
 <script>
 import NavMobile from "../components/NavMobile.vue";
 import NavDesktop from "../components/NavDesktop.vue";
 import NewChat from "../components/NewChat.vue";
+import ChatWindow from "../components/ChatWindow.vue";
 
 import { getUser } from "../composables/getUser";
 import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
-  components: { NavMobile, NavDesktop, NewChat },
+  components: { NavMobile, NavDesktop, NewChat, ChatWindow },
 
   setup() {
     const { currentPerson } = getUser();

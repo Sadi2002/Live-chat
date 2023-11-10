@@ -43,6 +43,16 @@ export default {
   padding: 10px;
   border-radius: 50%;
 }
+.profile h3 {
+  color: #fff;
+}
+.logout i[data-v-5da33729] {
+  color: #fff;
+}
+
+.logout i {
+  color: #fff;
+}
 
 nav {
   width: 100%;
@@ -51,10 +61,11 @@ nav {
   align-items: center;
   padding: 10px;
   padding-right: 20px;
-  background: rgba(121, 176, 111, 0.77);
+  background: #4a4a7d;
   justify-content: space-between;
   border-radius: 0 0 20px 20px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
 }
 
 .logout i {

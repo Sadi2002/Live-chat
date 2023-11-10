@@ -46,7 +46,9 @@ export default {
 
 nav {
   margin: 0 auto;
-  position: relative;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
   width: 60%;
   height: 80px;
   display: flex;
@@ -54,7 +56,7 @@ nav {
   padding: 10px;
   padding-right: 20px;
 
-  background: rgba(115, 179, 115, 0.77);
+  background: #4a4a7d;
   justify-content: space-between;
   border-radius: 0 0 20px 20px;
   max-width: 1400px;

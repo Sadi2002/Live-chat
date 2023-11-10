@@ -7,8 +7,9 @@
           placeholder="Napisz wiadomość..."
           v-model="message"
         />
-        <i class="fas fa-paper-plane"></i>
+        <i @click="getSubmit" class="fas fa-paper-plane"></i>
       </div>
+      <div class="error">{{ error }}</div>
     </form>
   </div>
 </template>
@@ -16,11 +17,13 @@
 <script>
 import { ref } from "vue";
 import { getUser } from "../composables/getUser";
+import { useChatDetails } from "../composables/useChatDetails";
 import { timestamp } from "../firebase/config";
 export default {
   setup() {
     const message = ref("");
     const { currentPerson } = getUser();
+    const { addDetails, error } = useChatDetails("messages");
 
     const getSubmit = async () => {
       const chatDetails = {
@@ -28,22 +31,24 @@ export default {
         user: currentPerson.value.displayName,
         createStamp: timestamp(),
       };
-      console.log(chatDetails);
-      message.value = "";
+      await addDetails(chatDetails);
+      if (!error.value) {
+        message.value = "";
+      }
     };
 
-    return { getSubmit, message, currentPerson };
+    return { getSubmit, message, currentPerson, addDetails, error };
   },
 };
 </script>
 
 <style scoped>
 .form-color {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
   width: 100%;
-  background: rgba(121, 176, 111, 0.77);
+  background: #4a4a7d;
   height: 80px;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,6 +85,7 @@ input {
   transform: translateY(-50%);
   padding: 18px;
   color: rgb(50, 50, 50);
+  cursor: pointer;
 }
 
 @media (768px <= width) {
