@@ -52,8 +52,10 @@ nav {
   align-items: center;
   padding: 10px;
   padding-right: 20px;
-  background: rgba(192, 211, 192, 0.469);
+  background: rgba(121, 176, 111, 0.77);
   justify-content: space-between;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .logout i {
