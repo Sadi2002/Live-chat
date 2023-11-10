@@ -45,7 +45,6 @@ export default {
 }
 
 nav {
-  position: absolute;
   width: 100%;
   height: 80px;
   display: flex;
