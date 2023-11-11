@@ -2,12 +2,7 @@
   <div class="chat-window">
     <div v-if="error">{{ error }}</div>
     <div v-if="documents" class="messages" ref="messages">
-      <div
-        v-for="doc in formatteDate"
-        :key="doc.id"
-        class="single"
-        ref="lastMessage"
-      >
+      <div v-for="doc in formatteDate" :key="doc.id" class="single">
         <span class="create-data">{{ doc.createStamp }}</span>
         <span class="name">{{ doc.user }}</span>
         <span class="message">{{ doc.message }}</span>
@@ -19,7 +14,6 @@
 <script>
 import { getChatDetails } from "../composables/getChatDetails";
 import { formatDistanceToNow } from "date-fns";
-
 import { computed, onUpdated, ref } from "vue";
 
 export default {
@@ -34,23 +28,21 @@ export default {
       }
     });
 
-    const lastMessageRef = ref(null);
+    const messages = ref(null);
 
     onUpdated(() => {
-      // Scrolluj na sam dół tylko jeżeli ostatnia wiadomość istnieje
-      if (lastMessageRef.value) {
-        lastMessageRef.value.scrollIntoView({ behavior: "smooth" });
-      }
+      messages.value.scrollTop = messages.value.scrollHeight;
+      console.log(messages.value.scrollTop);
     });
 
-    return { documents, error, formatteDate, lastMessageRef };
+    return { documents, error, formatteDate, messages };
   },
 };
 </script>
 
 <style>
 .chat-window {
-  height: 100%;
+  /* height: 100%; */
   padding-left: 20px;
   padding-top: 100px;
   padding-bottom: 100px;
@@ -58,6 +50,8 @@ export default {
 .messages {
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  max-height: 500px;
 }
 .single {
   margin-bottom: 10px;
@@ -88,6 +82,9 @@ export default {
   .chat-window {
     width: 60%;
     margin: 0 auto;
+  }
+  .messages {
+    max-height: 600px;
   }
 }
 </style>
